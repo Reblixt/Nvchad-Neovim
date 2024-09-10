@@ -1,4 +1,4 @@
-require "nvchad.options"
+require("nvchad.options")
 
 local opt = vim.opt
 local o = vim.o
@@ -6,6 +6,10 @@ local o = vim.o
 
 opt.spelllang = { "en" }
 -- local o = vim.o
-o.relativenumber = true
 opt.scrolloff = 18
-o.cursorlineopt = 'both' -- to enable cursorline!
+
+o.clipboard = "unnamedplus"
+o.linebreak = true
+o.wrap = false
+o.relativenumber = true
+o.cursorlineopt = "both" -- to enable cursorline!

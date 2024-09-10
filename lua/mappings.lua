@@ -1,4 +1,4 @@
-require "nvchad.mappings"
+require("nvchad.mappings")
 
 -- add yours here
 local nomap = vim.keymap.del
@@ -7,29 +7,30 @@ local map = vim.keymap.set
 nomap("n", "<tab>")
 nomap("n", "<s-tab>")
 nomap("n", "<leader>b")
+nomap("n", "<leader>x")
 
 local function quit_with_check()
-  local unsaved = false
-  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-    if vim.api.nvim_buf_get_option(buf, 'modified') then
-      unsaved = true
-      break
-    end
-  end
+	local unsaved = false
+	for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+		if vim.api.nvim_buf_get_option(buf, "modified") then
+			unsaved = true
+			break
+		end
+	end
 
-  if unsaved then
-    local choice = vim.fn.input('You have unsaved changes. Do you want to save? (y/n/c): ')
-    if choice:lower() == 'y' then
-      vim.cmd('wa!')
-      vim.cmd('qa')
-    elseif choice:lower() == 'n' then
-      vim.cmd('qa!')
-    else
-      print('Cancelled')
-    end
-  else
-    vim.cmd('qa')
-  end
+	if unsaved then
+		local choice = vim.fn.input("You have unsaved changes. Do you want to save? (y/n/c): ")
+		if choice:lower() == "y" then
+			vim.cmd("wa!")
+			vim.cmd("qa")
+		elseif choice:lower() == "n" then
+			vim.cmd("qa!")
+		else
+			print("Cancelled")
+		end
+	else
+		vim.cmd("qa")
+	end
 end
 
 map("n", "<leader>wd", ":close<CR>", { noremap = true, silent = true, desc = "Close current window" })
@@ -42,23 +43,22 @@ map("i", "jk", "<ESC>")
 map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 
 map({ "n", "t" }, "<A-t>", function()
-  require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
+	require("nvchad.term").toggle({ pos = "float", id = "floatTerm" })
 end, { desc = "terminal toggle floating term" })
-
 
 -- tabufline
 map("n", "<leader>bn", "<cmd>enew<CR>", { desc = "buffer new" })
 
 map("n", "<S-l>", function()
-  require("nvchad.tabufline").next()
+	require("nvchad.tabufline").next()
 end, { desc = "buffer goto next" })
 
 map("n", "<S-h>", function()
-  require("nvchad.tabufline").prev()
+	require("nvchad.tabufline").prev()
 end, { desc = "buffer goto prev" })
 
 map("n", "<leader>bd", function()
-  require("nvchad.tabufline").close_buffer()
+	require("nvchad.tabufline").close_buffer()
 end, { desc = "buffer close" })
 
 -- nvim-dap
@@ -68,17 +68,16 @@ map("n", "<Leader>dk", "<cmd>lua require'dap'.step_out()<CR>", { desc = "Debugge
 map("n", "<Leader>dc>", "<cmd>lua require'dap'.continue()<CR>", { desc = "Debugger continue" })
 map("n", "<Leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<CR>", { desc = "Debugger toggle breakpoint" })
 map(
-  "n",
-  "<Leader>dd",
-  "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>",
-  { desc = "Debugger set conditional breakpoint" }
+	"n",
+	"<Leader>dd",
+	"<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>",
+	{ desc = "Debugger set conditional breakpoint" }
 )
 map("n", "<Leader>de", "<cmd>lua require'dap'.terminate()<CR>", { desc = "Debugger reset" })
 map("n", "<Leader>dr", "<cmd>lua require'dap'.run_last()<CR>", { desc = "Debugger run last" })
 
 -- rustaceanvim
 map("n", "<Leader>dt", "<cmd>lua vim.cmd('RustLsp testables')<CR>", { desc = "Debugger testables" })
-
 
 -- Move line up with Alt-k
 map("n", "<A-k>", ":m .-2<CR>==", { noremap = true, silent = true, desc = "Move line up" })
@@ -89,5 +88,17 @@ map("v", "<A-k>", ":m '<-2<CR>gv=gv", { noremap = true, silent = true, desc = "M
 map("n", "<A-j>", ":m .+1<CR>==", { noremap = true, silent = true, desc = "Move line down" })
 -- map("i", "<A-j>", "<Esc>:m .+1<CR>==gi", { noremap = true, silent = true, desc = "Move line down" })
 map("v", "<A-j>", ":m '>+1<CR>gv=gv", { noremap = true, silent = true, desc = "Move line down" })
-
 map("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+map("n", "<leader>lw", "<cmd> set wrap! <CR>", { desc = "Toggle wrap" })
+
+-- Indentation
+map("v", "<", "<gv", { noremap = true, silent = true, desc = "Indent left" })
+map("v", ">", ">gv", { noremap = true, silent = true, desc = "Indent right" })
+-- Yank without copying to system clipboard
+map("v", "p", '"_dp', { noremap = true, silent = true, desc = "Paste without yanking" })
+
+--- Diagnostics
+map("n", "<leader>xx", vim.diagnostic.open_float, { desc = "Open diagnostics" })
+map("n", "<leader>xw", vim.diagnostic.setloclist, { desc = "Open diagnostics in loclist" })
+map("n", "<leader>xl", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
+map("n", "<leader>xh", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
