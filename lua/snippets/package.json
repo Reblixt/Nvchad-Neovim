@@ -1,0 +1,13 @@
+{
+  "name": "Carl Snippets",
+  "contributes": {
+    "snippets": [
+      {
+        "language": [
+          "solidity"
+        ],
+        "path": "./solidity.json"
+      }
+    ]
+  }
+}
