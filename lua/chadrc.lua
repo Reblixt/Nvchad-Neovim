@@ -18,6 +18,11 @@ local M = {
 			"html-lsp",
 		},
 	},
+	ui = {
+		statusline = {
+			theme = "default",
+		},
+	},
 }
 
 M.base46 = {

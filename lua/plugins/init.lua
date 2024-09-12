@@ -237,6 +237,9 @@ return {
 		dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
 		config = function()
 			require("dapui").setup()
+			-- locale dapui = require("dapui")
+			--    dapui.setup()
+			-- return require("configs.dap-nvim")
 		end,
 	},
 	{

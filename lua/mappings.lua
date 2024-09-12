@@ -33,12 +33,10 @@ local function quit_with_check()
 	end
 end
 
-map("n", "<leader>wd", ":close<CR>", { noremap = true, silent = true, desc = "Close current window" })
 -- Map <leader>qq to the quit_with_check function
 map("n", "<leader>qq", quit_with_check, { noremap = true, silent = true, desc = "Quit Neovim with check" })
--- map("n", "<leader>qq", ":qa<CR>", { noremap = true, silent = true, desc = "Quit Neovim" })
 map("n", ";", ":", { desc = "CMD enter command mode" })
-map("i", "jk", "<ESC>")
+-- map("i", "jk", "<ESC>")
 
 map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 
@@ -48,15 +46,12 @@ end, { desc = "terminal toggle floating term" })
 
 -- tabufline
 map("n", "<leader>bn", "<cmd>enew<CR>", { desc = "buffer new" })
-
 map("n", "<S-l>", function()
 	require("nvchad.tabufline").next()
 end, { desc = "buffer goto next" })
-
 map("n", "<S-h>", function()
 	require("nvchad.tabufline").prev()
 end, { desc = "buffer goto prev" })
-
 map("n", "<leader>bd", function()
 	require("nvchad.tabufline").close_buffer()
 end, { desc = "buffer close" })
@@ -79,14 +74,10 @@ map("n", "<Leader>dr", "<cmd>lua require'dap'.run_last()<CR>", { desc = "Debugge
 -- rustaceanvim
 map("n", "<Leader>dt", "<cmd>lua vim.cmd('RustLsp testables')<CR>", { desc = "Debugger testables" })
 
--- Move line up with Alt-k
+-- Move line up and down with Alt-j
 map("n", "<A-k>", ":m .-2<CR>==", { noremap = true, silent = true, desc = "Move line up" })
--- map("i", "<A-k>", "<Esc>:m .-2<CR>==gi", { noremap = true, silent = true, desc = "Move line up" })
 map("v", "<A-k>", ":m '<-2<CR>gv=gv", { noremap = true, silent = true, desc = "Move line up" })
-
--- Move line down with Alt-j
 map("n", "<A-j>", ":m .+1<CR>==", { noremap = true, silent = true, desc = "Move line down" })
--- map("i", "<A-j>", "<Esc>:m .+1<CR>==gi", { noremap = true, silent = true, desc = "Move line down" })
 map("v", "<A-j>", ":m '>+1<CR>gv=gv", { noremap = true, silent = true, desc = "Move line down" })
 map("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 map("n", "<leader>lw", "<cmd> set wrap! <CR>", { desc = "Toggle wrap" })
@@ -98,7 +89,12 @@ map("v", ">", ">gv", { noremap = true, silent = true, desc = "Indent right" })
 map("v", "p", '"_dp', { noremap = true, silent = true, desc = "Paste without yanking" })
 
 --- Diagnostics
-map("n", "<leader>xx", vim.diagnostic.open_float, { desc = "Open diagnostics" })
-map("n", "<leader>xw", vim.diagnostic.setloclist, { desc = "Open diagnostics in loclist" })
-map("n", "<leader>xl", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
+map("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Open diagnostics" })
+map("n", "<leader>xx", vim.diagnostic.setloclist, { desc = "Open diagnostics in loclist" })
+map("n", "<leader>xn", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
 map("n", "<leader>xh", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
+
+-- Panel/Window management
+map("n", "<leader>|", ":vsplit<CR>", { silent = true, desc = "Vertical split" })
+map("n", "<leader>-", ":split<CR>", { silent = true, desc = "Horizontal split" })
+map("n", "<leader>wd", ":close<CR>", { noremap = true, silent = true, desc = "Close current window" })
