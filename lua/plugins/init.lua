@@ -46,6 +46,9 @@ return {
 	{
 		"stevearc/oil.nvim",
 		lazy = false,
+		-- config = function()
+		-- 	return require("configs.oil")
+		-- end,
 		opts = {},
 		-- Optional dependencies
 		dependencies = { { "echasnovski/mini.icons", opts = {} } },
@@ -66,6 +69,8 @@ return {
 		lazy = false,
 		version = false, -- set this if you want to always pull the latest change
 		opts = {
+			provider = "copilot",
+			auto_suggestions_provider = "copilot",
 			-- add any opts here
 		},
 		-- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
@@ -235,6 +240,8 @@ return {
 	{
 		"rcarriga/nvim-dap-ui",
 		dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+		event = "BufRead",
+		lazy = false,
 		config = function()
 			require("dapui").setup()
 			-- locale dapui = require("dapui")
@@ -279,5 +286,46 @@ return {
 		dependencies = { "rafamadriz/friendly-snippets" },
 		lazy = false,
 		require("luasnip.loaders.from_vscode").lazy_load({ paths = "~/.config/nvim/lua/snippets" }),
+	},
+	-- lazy.nvim
+	{
+		{
+			"folke/noice.nvim",
+			event = "VeryLazy",
+			opts = {
+				lsp = {
+					-- Inaktivera helt LSP-relaterade funktioner i Noice
+					override = {
+						["vim.lsp.util.convert_input_to_markdown_lines"] = false,
+						["vim.lsp.util.stylize_markdown"] = false,
+						["cmp.entry.get_documentation"] = false,
+					},
+					-- Inaktivera signaturfunktionen
+					signature = {
+						enabled = false,
+					},
+					-- Inaktivera hover
+					hover = {
+						enabled = false,
+					},
+				},
+				-- Inaktivera förhandsvisning av kommandon
+				presets = {
+					lsp_doc_border = false,
+				},
+			},
+			dependencies = {
+				"MunifTanjim/nui.nvim",
+				"rcarriga/nvim-notify",
+			},
+		},
+	},
+	{
+		"rcarriga/nvim-notify",
+		config = function()
+			require("notify").setup({
+				background_colour = "#000000",
+			})
+		end,
 	},
 }

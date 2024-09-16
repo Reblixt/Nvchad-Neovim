@@ -33,13 +33,17 @@ local function quit_with_check()
 	end
 end
 
+map("n", "<leader>cr", "<cmd>lua vim.lsp.buf.rename()<CR>", { noremap = true })
+
 -- Map <leader>qq to the quit_with_check function
 map("n", "<leader>qq", quit_with_check, { noremap = true, silent = true, desc = "Quit Neovim with check" })
 map("n", ";", ":", { desc = "CMD enter command mode" })
 -- map("i", "jk", "<ESC>")
 
+-- Save file
 map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 
+-- Terminal mappings
 map({ "n", "t" }, "<A-t>", function()
 	require("nvchad.term").toggle({ pos = "float", id = "floatTerm" })
 end, { desc = "terminal toggle floating term" })
@@ -57,9 +61,9 @@ map("n", "<leader>bd", function()
 end, { desc = "buffer close" })
 
 -- nvim-dap
-map("n", "<Leader>dl", "<cmd>lua require'dap'.step_into()<CR>", { desc = "Debugger step into" })
+map("n", "<Leader>di", "<cmd>lua require'dap'.step_into()<CR>", { desc = "Debugger step into" })
 map("n", "<Leader>dj", "<cmd>lua require'dap'.step_over()<CR>", { desc = "Debugger step over" })
-map("n", "<Leader>dk", "<cmd>lua require'dap'.step_out()<CR>", { desc = "Debugger step out" })
+map("n", "<Leader>do", "<cmd>lua require'dap'.step_out()<CR>", { desc = "Debugger step out" })
 map("n", "<Leader>dc>", "<cmd>lua require'dap'.continue()<CR>", { desc = "Debugger continue" })
 map("n", "<Leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<CR>", { desc = "Debugger toggle breakpoint" })
 map(
@@ -70,6 +74,10 @@ map(
 )
 map("n", "<Leader>de", "<cmd>lua require'dap'.terminate()<CR>", { desc = "Debugger reset" })
 map("n", "<Leader>dr", "<cmd>lua require'dap'.run_last()<CR>", { desc = "Debugger run last" })
+--- DapUI
+map("n", "<Leader>du", "<cmd>lua require'dapui'.toggle()<CR>", { desc = "Debugger toggle" })
+-- map("n", "<Leader>dl", "<cmd>lua require'dapui'.float_element('watches')<CR>", { desc = "Debugger toggle" })
+-- map("n", "<Leader>dl", "<cmd>lua require'dapui'.eval()<CR>", { desc = "Debugger toggle" })
 
 -- rustaceanvim
 map("n", "<Leader>dt", "<cmd>lua vim.cmd('RustLsp testables')<CR>", { desc = "Debugger testables" })
@@ -98,3 +106,41 @@ map("n", "<leader>xh", vim.diagnostic.goto_prev, { desc = "Go to previous diagno
 map("n", "<leader>|", ":vsplit<CR>", { silent = true, desc = "Vertical split" })
 map("n", "<leader>-", ":split<CR>", { silent = true, desc = "Horizontal split" })
 map("n", "<leader>wd", ":close<CR>", { noremap = true, silent = true, desc = "Close current window" })
+
+vim.keymap.set("n", "<leader>io", function()
+	local function get_image_path()
+		-- Get the current line
+		local line = vim.api.nvim_get_current_line()
+		-- Pattern to match image path in Markdown
+		local image_pattern = "%[.-%]%((.-)%)"
+		-- Extract relative image path
+		local _, _, image_path = string.find(line, image_pattern)
+
+		return image_path
+	end
+	local image_path = get_image_path()
+
+	if image_path then
+		-- Check if the image path starts with "http" or "https"
+		if string.sub(image_path, 1, 4) == "http" then
+			print("URL image, use 'gx' to open it in the default browser.")
+		else
+			-- Construct absolute image path
+			local current_file_path = vim.fn.expand("%:p:h")
+			local absolute_image_path = current_file_path .. "/" .. image_path
+
+			-- Construct command to open image in Preview
+			local command = "open -a Preview " .. vim.fn.shellescape(absolute_image_path)
+			-- Execute the command
+			local success = os.execute(command)
+
+			if success then
+				print("Opened image in Preview: " .. absolute_image_path)
+			else
+				print("Failed to open image in Preview: " .. absolute_image_path)
+			end
+		end
+	else
+		print("No image found under the cursor")
+	end
+end, { desc = "[P](macOS) Open image under cursor in Preview" })

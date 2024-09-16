@@ -4,6 +4,12 @@
 
 ---@type ChadrcConfig
 local M = {
+	-- term = {
+	-- 	pos = "float",
+	-- },
+	-- nvconfig = {
+	--
+	-- },
 	mason = {
 		pkgs = {
 			"eslint-lsp",
@@ -20,7 +26,7 @@ local M = {
 	},
 	ui = {
 		statusline = {
-			theme = "default",
+			theme = "minimal",
 		},
 	},
 }
