@@ -47,9 +47,9 @@
       "import {${1:ContractName}} from 'src/${1:ContractName}.sol';",
       "",
       "contract Test${1:ContractName} is Test {",
-      "  ${1:ContractName} deployer = new ${1:ContractName}();",
+      "  ${1:ContractName} deployer;",
       "",
-      "function setUp() public {}",
+      "function setUp() public {deployer = new ${1:ContractName}();}",
       "}"
     ]
   }

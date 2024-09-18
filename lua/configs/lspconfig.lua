@@ -8,7 +8,7 @@ local lspconfig = require("lspconfig")
 -- EXAMPLE
 local servers = { "html", "cssls", "solidity_ls_nomicfoundation", "vtsls", "tailwindcss", "eslint" }
 local nvlsp = require("nvchad.configs.lspconfig")
-
+-- "rust_analyzer"
 -- lsps with default config
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup({
@@ -19,8 +19,13 @@ for _, lsp in ipairs(servers) do
 end
 
 -- configuring single server, example: typescript
--- lspconfig.tsserver.setup {
---   on_attach = nvlsp.on_attach,
---   on_init = nvlsp.on_init,
---   capabilities = nvlsp.capabilities,
--- }
+-- lspconfig.rust_analyzer.setup({
+-- 	on_attach = nvlsp.on_attach,
+-- 	on_init = nvlsp.on_init,
+-- 	capabilities = nvlsp.capabilities,
+-- 	settings = {
+-- 		keybindings = {
+-- 			goto_type_definition = "<leader>gd",
+-- 		},
+-- 	},
+-- })
