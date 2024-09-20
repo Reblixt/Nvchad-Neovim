@@ -61,3 +61,19 @@ if vim.g.neovide then
 	vim.g.neovide_text_contrast = 0.5
 	vim.g.neovide_scale_factor = 1.0
 end
+
+-- if vim.g.rustaceanvim then
+-- 	local mason_registry = require("mason-registry")
+-- 	local codelldb = mason_registry.get_package("codelldb")
+-- 	local extension_path = codelldb:get_install_path() .. "/extension/"
+-- 	local codelldb_path = extension_path .. "adapter/codelldb"
+-- 	local liblldb_path = extension_path .. "lldb/lib/liblldb.dylib"
+-- 	local cfg = require("rustaceanvim.config")
+-- 	vim.g.rustaceanvim = {
+-- 		tools = {},
+-- 		server = {},
+-- 		dap = {
+-- 			adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path),
+-- 		},
+-- 	}
+-- end
