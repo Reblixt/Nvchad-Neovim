@@ -4,9 +4,23 @@
 
 ---@type ChadrcConfig
 local M = {
-	-- term = {
-	-- 	pos = "float",
+	term = {
+		hl = "Normal:term,WinSeparator:WinSeparator",
+		sizes = { sp = 0.3, vsp = 0.2 },
+		float = {
+			relative = "editor",
+			row = 0.06,
+			col = 0.1,
+			width = 0.8,
+			height = 0.8,
+			border = "rounded",
+		},
+	},
+
+	-- nvdash = {
+	-- 	load_on_startup = true,
 	-- },
+
 	-- nvconfig = {
 	--
 	-- },

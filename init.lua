@@ -31,29 +31,28 @@ dofile(vim.g.base46_cache .. "statusline")
 
 require("options")
 require("nvchad.autocmds")
-
-local api = vim.api
+-- local api = vim.api
 
 -- Create an autocommand group
-local dash_group = api.nvim_create_augroup("DashboardGroup", { clear = true })
+-- local dash_group = api.nvim_create_augroup("DashboardGroup", { clear = true })
 
 -- Create an autocommand
-api.nvim_create_autocmd("VimEnter", {
-	group = dash_group,
-	callback = function()
-		if vim.fn.argc() == 0 and vim.fn.line2byte("$") == -1 then
-			vim.cmd("Nvdash")
-		end
-	end,
-})
+-- api.nvim_create_autocmd("VimEnter", {
+-- 	group = dash_group,
+-- 	callback = function()
+-- 		if vim.fn.argc() == 0 and vim.fn.line2byte("$") == -1 then
+-- 			vim.cmd("Nvdash")
+-- 		end
+-- 	end,
+-- })
 
 vim.schedule(function()
 	require("mappings")
 end)
 
 if vim.g.neovide then
-	vim.o.guifont = "FiraCode Nerd Font:h12"
-	vim.g.neovide_transparency = 0.75
+	vim.o.guifont = "FiraCode Nerd Font:h13"
+	vim.g.neovide_transparency = 0.85
 	-- vim.g.transparency = 0.7
 	vim.g.neovide_theme = "auto"
 	vim.g.neovide_refresh_rate = 144

@@ -13,6 +13,8 @@ return {
 			"javascript",
 			"json",
 			"rust",
+			"markdown",
+			"yaml",
 		},
 	},
 }
