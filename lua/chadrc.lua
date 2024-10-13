@@ -4,55 +4,55 @@
 
 ---@type ChadrcConfig
 local M = {
-	term = {
-		hl = "Normal:term,WinSeparator:WinSeparator",
-		sizes = { sp = 0.3, vsp = 0.2 },
-		float = {
-			relative = "editor",
-			row = 0.06,
-			col = 0.1,
-			width = 0.8,
-			height = 0.8,
-			border = "rounded",
-		},
-	},
+  term = {
+    hl = "Normal:term,WinSeparator:WinSeparator",
+    sizes = { sp = 0.3, vsp = 0.2 },
+    float = {
+      relative = "editor",
+      row = 0.06,
+      col = 0.1,
+      width = 0.8,
+      height = 0.8,
+      border = "rounded",
+    },
+  },
 
-	-- nvdash = {
-	-- 	load_on_startup = true,
-	-- },
+  -- nvdash = {
+  -- 	load_on_startup = true,
+  -- },
 
-	-- nvconfig = {
-	--
-	-- },
-	mason = {
-		pkgs = {
-			"eslint-lsp",
-			"prettierd",
-			"solhint",
-			"nomicfoundation-solidity-language-server",
-			"vtsls",
-			"rust-analyzer",
-			"tailwindcss-language-server",
-			"codelldb",
-			"css-lsp",
-			"html-lsp",
-		},
-	},
-	ui = {
-		statusline = {
-			theme = "minimal",
-		},
-	},
+  -- nvconfig = {
+  --
+  -- },
+  mason = {
+    pkgs = {
+      "eslint-lsp",
+      "prettierd",
+      "solhint",
+      "nomicfoundation-solidity-language-server",
+      "vtsls",
+      "rust-analyzer",
+      "tailwindcss-language-server",
+      "codelldb",
+      "css-lsp",
+      "html-lsp",
+    },
+  },
+  ui = {
+    statusline = {
+      theme = "minimal",
+    },
+  },
 }
 
 M.base46 = {
-	theme = "catppuccin",
-	transparency = true,
+  theme = "catppuccin",
+  transparency = true,
 
-	hl_override = {
-		Comment = { italic = true },
-		["@comment"] = { italic = true },
-	},
+  hl_override = {
+    Comment = { italic = true },
+    ["@comment"] = { italic = true },
+  },
 }
 
 return M

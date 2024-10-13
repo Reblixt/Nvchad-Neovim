@@ -1,5 +1,4 @@
 require("nvchad.options")
-
 local opt = vim.opt
 local o = vim.o
 -- add yours here!
@@ -13,3 +12,5 @@ o.linebreak = true
 o.wrap = false
 o.relativenumber = true
 o.cursorlineopt = "both" -- to enable cursorline!
+
+vim.cmd [[ autocmd BufRead,BufNewFile *.slint set filetype=slint ]]
