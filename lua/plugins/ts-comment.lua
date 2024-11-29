@@ -1,5 +1,9 @@
 return {
   "folke/ts-comments.nvim",
   event = "VeryLazy",
-  opts = {},
+  opts = {
+    lang = {
+      move = "// %s"
+    }
+  },
 }
