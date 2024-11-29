@@ -17,7 +17,6 @@ local M = {
     },
   },
 
-  -- nvdash = {
   -- 	load_on_startup = true,
   -- },
 
@@ -42,6 +41,14 @@ local M = {
     statusline = {
       theme = "minimal",
     },
+    cmp = {
+      lspkind_text = true,
+      style = "default",
+      format_colors = {
+        tailwind = true,
+        icons = true,
+      }
+    }
   },
 }
 
@@ -52,7 +59,18 @@ M.base46 = {
   hl_override = {
     Comment = { italic = true },
     ["@comment"] = { italic = true },
+    Bold = { bold = true },
   },
+  hl_add = {
+    ["@include.member.move"] = { fg = "#89b4fa" },
+    -- ["@function.name.move"] = { fg = "#04a5e5" },
+    ["@constructor.name.move"] = { fg = "#F9E2AF" }, --
+    ["@namespace.module.name.move"] = { fg = "#b4befe" },
+    -- ["@macro.call.move"] = { fg = "#d20f39" },
+    ["@function.call.move"] = { fg = "#89b4fa" },
+    ["@list.variable.move"] = { fg = "#bac2de" },
+    ["@list.move"] = { fg = "#f38ba8" },
+  }
 }
 
 return M

@@ -7,13 +7,14 @@ return {
       "vimdoc",
       "html",
       "css",
+      "c",
       "solidity",
       "typescript",
       "tsx",
       "javascript",
       "json",
       "rust",
-      "markdown",
+      "markdown_inline",
       "yaml",
       "slint",
       "editorconfig",
@@ -21,6 +22,14 @@ return {
       "git_rebase",
       "gitcommit",
       "gitignore",
+      "kconfig",
+      "kdl",
+      -- "move",
     },
-  },
+    auto_install = true,
+    highlight = {
+      enable = true, -- Enable syntax highlighting
+      additional_vim_regex_highlighting = false,
+    },
+  }
 }
