@@ -114,6 +114,9 @@
   expr: (name_expression
     access: (module_access
       member: (identifier) @variable.parameter)))
+(exp_field
+  field: (field_identifier) ; [299, 12] - [299, 17]
+  expr: (vector_expression)@variable.parameter)
 
 (arg_list) @list
 (arg_list ; [41, 29] - [41, 63]
