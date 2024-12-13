@@ -24,7 +24,7 @@ local options = {
     },
     ["prettier-move"] = {
       command = "prettier-move",
-      args = { "--stdin-filepath", "$FILENAME", "--parser", "move-parse" },
+      args = { "--stdin-filepath", "$FILENAME" },
       range_args = function(_, ctx)
         local util = require "conform.util"
         local lo, hi = util.get_offsets_from_range(ctx.buf, ctx.range)
