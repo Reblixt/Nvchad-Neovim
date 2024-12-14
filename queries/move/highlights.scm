@@ -83,7 +83,7 @@
 (module_access "$" (identifier)  @macro.variable)
 "$"  @macro.variable
 
-(module_access module: (module_identifier)  member: (identifier) @constructor.name)
+; (module_access module: (module_identifier)  member: (identifier) @constructor.name)
 (abort_expression) @keyword
 (mut_ref) @keyword
 ;; Lambdas

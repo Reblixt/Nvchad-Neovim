@@ -4,7 +4,11 @@ return {
 	-- config = function()
 	-- 	return require("configs.oil")
 	-- end,
-	opts = {},
+	opts = {
+		columns = {
+			"icon",
+		},
+	},
 	-- Optional dependencies
 	dependencies = { { "echasnovski/mini.icons", opts = {} } },
 	-- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
