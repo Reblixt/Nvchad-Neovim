@@ -24,6 +24,7 @@ return {
 			"query",
 			"regex",
 			"yaml",
+			"sql",
 			"toml",
 			"slint",
 			"editorconfig",

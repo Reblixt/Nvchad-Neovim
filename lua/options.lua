@@ -13,4 +13,5 @@ o.wrap = false
 o.relativenumber = true
 o.cursorlineopt = "both" -- to enable cursorline!
 
-vim.cmd [[ autocmd BufRead,BufNewFile *.slint set filetype=slint ]]
+vim.cmd([[ autocmd BufRead,BufNewFile *.slint set filetype=slint ]])
+vim.cmd("AWStart")
