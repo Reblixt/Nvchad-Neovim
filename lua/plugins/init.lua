@@ -14,13 +14,13 @@ return {
 	--   enable = true,
 	-- },
 
-	{
-		"folke/todo-comments.nvim",
-		event = "BufRead",
-		lazy = true,
-		dependencies = { "nvim-lua/plenary.nvim" },
-		opts = { signs = false },
-	},
+	-- {
+	-- 	"folke/todo-comments.nvim",
+	-- 	event = "BufRead",
+	-- 	lazy = true,
+	-- 	dependencies = { "nvim-lua/plenary.nvim" },
+	-- 	opts = { signs = false },
+	-- },
 	{
 		"norcalli/nvim-colorizer.lua",
 		event = "BufRead",

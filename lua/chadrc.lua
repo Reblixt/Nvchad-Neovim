@@ -4,6 +4,14 @@
 
 ---@type ChadrcConfig
 local M = {
+	-- plugins = {
+	-- 	override = {
+	-- 		["nvim-telescope/telescope.nvim"] = {
+	-- 			enabled = false,
+	--
+	-- 		},
+	-- 	},
+	-- },
 	term = {
 		hl = "Normal:term,WinSeparator:WinSeparator",
 		sizes = { sp = 0.3, vsp = 0.2 },
@@ -53,6 +61,7 @@ local M = {
 }
 
 M.base46 = {
+
 	theme = "kanagawa",
 	-- transparency = true,
 

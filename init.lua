@@ -5,8 +5,8 @@ vim.g.mapleader = " "
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 if not vim.uv.fs_stat(lazypath) then
-  local repo = "https://github.com/folke/lazy.nvim.git"
-  vim.fn.system({ "git", "clone", "--filter=blob:none", repo, "--branch=stable", lazypath })
+	local repo = "https://github.com/folke/lazy.nvim.git"
+	vim.fn.system({ "git", "clone", "--filter=blob:none", repo, "--branch=stable", lazypath })
 end
 
 vim.opt.rtp:prepend(lazypath)
@@ -15,14 +15,14 @@ local lazy_config = require("configs.lazy")
 
 -- load plugins
 require("lazy").setup({
-  {
-    "NvChad/NvChad",
-    lazy = false,
-    branch = "v2.5",
-    import = "nvchad.plugins",
-  },
+	{
+		"NvChad/NvChad",
+		lazy = false,
+		branch = "v2.5",
+		import = "nvchad.plugins",
+	},
 
-  { import = "plugins" },
+	{ import = "plugins" },
 }, lazy_config)
 
 -- load theme
@@ -46,31 +46,31 @@ require("nvchad.autocmds")
 -- 	end,
 -- })
 
-vim.schedule(function()
-  require("mappings")
-end)
+-- vim.schedule(function()
+require("custom.mappings")
+-- end)
 
 if vim.g.neovide then
-  vim.o.guifont = "FiraCode Nerd Font:h13"
-  vim.g.neovide_transparency = 0.85
-  -- vim.g.transparency = 0.7
-  vim.g.neovide_theme = "auto"
-  vim.g.neovide_refresh_rate = 144
-  vim.g.neovide_text_gamma = 0.0
-  vim.g.neovide_text_contrast = 0.5
-  vim.g.neovide_scale_factor = 1.0
+	vim.o.guifont = "FiraCode Nerd Font:h13"
+	vim.g.neovide_transparency = 0.85
+	-- vim.g.transparency = 0.7
+	vim.g.neovide_theme = "auto"
+	vim.g.neovide_refresh_rate = 144
+	vim.g.neovide_text_gamma = 0.0
+	vim.g.neovide_text_contrast = 0.5
+	vim.g.neovide_scale_factor = 1.0
 end
 
 local move_config = require("nvim-treesitter.parsers").get_parser_configs()
 
 move_config.move = {
-  install_info = {
-    url = "https://github.com/tzakian/tree-sitter-move",
-    files = { "src/parser.c" },
-    branch = "main",
-  },
-  filetype = "move",
-  used_by = { "move" },
+	install_info = {
+		url = "https://github.com/tzakian/tree-sitter-move",
+		files = { "src/parser.c" },
+		branch = "main",
+	},
+	filetype = "move",
+	used_by = { "move" },
 }
 -- if vim.g.rustaceanvim then
 -- 	local mason_registry = require("mason-registry")
