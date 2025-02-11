@@ -14,13 +14,37 @@ return {
 	--   enable = true,
 	-- },
 
-	-- {
-	-- 	"folke/todo-comments.nvim",
-	-- 	event = "BufRead",
-	-- 	lazy = true,
-	-- 	dependencies = { "nvim-lua/plenary.nvim" },
-	-- 	opts = { signs = false },
-	-- },
+	{
+		"folke/todo-comments.nvim",
+		event = "BufRead",
+		lazy = true,
+		-- dependencies = { "nvim-lua/plenary.nvim" },
+		opts = { signs = false },
+	},
+	{
+		"folke/trouble.nvim",
+		-- optional = true,
+		specs = {
+			"folke/snacks.nvim",
+			opts = function(_, opts)
+				return vim.tbl_deep_extend("force", opts or {}, {
+					picker = {
+						actions = require("trouble.sources.snacks").actions,
+						win = {
+							input = {
+								keys = {
+									["<c-t>"] = {
+										"trouble_open",
+										mode = { "n", "i" },
+									},
+								},
+							},
+						},
+					},
+				})
+			end,
+		},
+	},
 	{
 		"norcalli/nvim-colorizer.lua",
 		event = "BufRead",

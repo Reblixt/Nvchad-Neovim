@@ -5,6 +5,7 @@ return {
 	---@type snacks.Config
 	opts = {
 		bigfile = { enabled = true },
+		debug = { enabled = true },
 		dashboard = { enabled = true },
 		indent = { enabled = true },
 		input = { enabled = true },
@@ -12,8 +13,14 @@ return {
 			enabled = true,
 			timeout = 3000,
 		},
-		picker = { enabled = true },
-		profiler = { enabled = true },
+		picker = {
+			enabled = true,
+			matcher = {
+				frecency = true,
+			},
+		},
+		git = { enabled = true },
+		-- profiler = { enabled = },
 		quickfile = { enabled = true },
 		scroll = { enabled = true },
 		statuscolumn = { enabled = false },
@@ -146,7 +153,14 @@ return {
 			desc = "Prev Reference",
 			mode = { "n", "t" },
 		},
-		-- { "<leader>da", function(...) Snacks.debug.inspect(...) end,     desc = "debug inspect ",              mode = { "n" } },
+		{
+			"<leader>da",
+			function(...)
+				Snacks.debug.inspect(...)
+			end,
+			desc = "debug inspect ",
+			mode = { "n" },
+		},
 		{
 			"<leader>N",
 			desc = "Neovim News",
@@ -185,6 +199,20 @@ return {
 				Snacks.picker.command_history()
 			end,
 			desc = "Command History",
+		},
+		{
+			"<leader>ft",
+			function()
+				Snacks.picker.todo_comments()
+			end,
+			desc = "Todo",
+		},
+		{
+			"<leader>sT",
+			function()
+				Snacks.picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME" } })
+			end,
+			desc = "Todo/Fix/Fixme",
 		},
 		-- {
 		-- 	"<leader>ff",
