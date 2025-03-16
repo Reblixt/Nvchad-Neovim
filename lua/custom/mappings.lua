@@ -26,6 +26,13 @@ map("n", "<leader>fm", function()
 	require("conform").format({ lsp_fallback = true })
 end, { desc = "general format file" })
 
+-- Ai Code Companion
+map("n", "<leader>at", "<cmd>CodeCompanionChat Toggle<CR>", { desc = "Toggle Ai chat" })
+map("n", "<leader>ai", ":CodeCompanion<CR>", { desc = "Inline assistant" })
+map("n", "<leader>aib", ":CodeCompanion /buffer", { desc = "Inline assistant" })
+map("v", "<leader>aa", ":CodeCompanionChat Add<CR>", { desc = "Add marked text to Ai chat" })
+map("n", "<leader>aa", ":CodeCompanionChat<CR>", { desc = "Add marked text to Ai chat" })
+
 -- global lsp mappings
 map("n", "<leader>ds", vim.diagnostic.setloclist, { desc = "LSP diagnostic loclist" })
 -- nvimtree

@@ -26,7 +26,7 @@
 ; (let_statement
 ;   binds: (bind_list
 ;            (bind_var (variable_identifier) @definition.var)
-;            (bind_unpack 
+;            (bind_unpack
 ;              (bind_field (field_identifier) @definition.var))))
 
 ; Local Variable Declarations in Spec Blocks

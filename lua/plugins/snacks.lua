@@ -9,6 +9,8 @@ return {
 		dashboard = { enabled = true },
 		indent = { enabled = true },
 		input = { enabled = true },
+		terminal = { enabled = false },
+		image = { enabled = true },
 		notifier = {
 			enabled = true,
 			timeout = 3000,
@@ -22,8 +24,7 @@ return {
 		git = { enabled = true },
 		-- profiler = { enabled = },
 		quickfile = { enabled = true },
-		scroll = { enabled = true },
-		statuscolumn = { enabled = false },
+		scroll = { enabled = false },
 		words = { enabled = true },
 		styles = {
 			notification = {
@@ -123,20 +124,20 @@ return {
 			end,
 			desc = "Dismiss All Notifications",
 		},
-		{
-			"<c-/>",
-			function()
-				Snacks.terminal()
-			end,
-			desc = "Toggle Terminal",
-		},
-		{
-			"<c-_>",
-			function()
-				Snacks.terminal()
-			end,
-			desc = "which_key_ignore",
-		},
+		-- {
+		--   "<c-/>",
+		--   function()
+		--     Snacks.terminal()
+		--   end,
+		--   desc = "Toggle Terminal",
+		-- },
+		-- {
+		--   "<c-_>",
+		--   function()
+		--     Snacks.terminal()
+		--   end,
+		--   desc = "which_key_ignore",
+		-- },
 		{
 			"]]",
 			function()

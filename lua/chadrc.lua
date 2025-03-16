@@ -4,14 +4,14 @@
 
 ---@type ChadrcConfig
 local M = {
-	-- plugins = {
-	-- 	override = {
-	-- 		["nvim-telescope/telescope.nvim"] = {
-	-- 			enabled = false,
-	--
-	-- 		},
-	-- 	},
-	-- },
+	plugins = {
+		cmp = {
+			enabled = false,
+		},
+		-- ["hrsh7th/nvim-cmp"] = {
+		-- 	enabled = false,
+		-- },
+	},
 	term = {
 		hl = "Normal:term,WinSeparator:WinSeparator",
 		sizes = { sp = 0.3, vsp = 0.2 },
@@ -63,7 +63,7 @@ local M = {
 M.base46 = {
 
 	theme = "kanagawa",
-	-- transparency = true,
+	transparency = true,
 
 	hl_override = {
 		Comment = { italic = true },
@@ -79,12 +79,22 @@ M.base46 = {
 		--
 		-- kanagawa
 		["@include.member.move"] = { fg = "#89b4fa" },
-		["@constructor.name.move"] = { fg = "#F9E2AF" }, --
+		["@constructor.name.move"] = { fg = "#FFA066" },
+		["@type.name.move"] = { fg = "#FFA066" },
+		["@type.definition.struct.move"] = { fg = "#FFA066" },
+		["@type.move"] = { fg = "#F4BB5C" },
+
+		["@punctuation.special.move"] = { fg = "#FFA066" },
+		["@punctuation.bracket.move"] = { fg = "#957FB8" },
+
 		["@namespace.module.name.move"] = { fg = "#b4befe" },
 		["@macro.call.move"] = { fg = "#C34043" },
 		["@function.call.move"] = { fg = "#7E9CD8" },
-		["@list.variable.move"] = { fg = "#DCD7BA" },
+		["@variable.special.move"] = { fg = "#E46876" },
+		["@variable.parameter.move"] = { fg = "#E46876" },
+		["@property.move"] = { fg = "#E46876" },
 
+		["@list.variable.move"] = { fg = "#DCD7BA" },
 		["@list.move"] = { fg = "#E46876" },
 	},
 }

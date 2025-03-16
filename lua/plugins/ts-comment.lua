@@ -1,9 +1,10 @@
 return {
-  "folke/ts-comments.nvim",
-  event = "VeryLazy",
-  opts = {
-    lang = {
-      move = "// %s"
-    }
-  },
+	"folke/ts-comments.nvim",
+	event = "VeryLazy",
+	opts = {
+		lang = {
+			move = "// %s",
+			prisma = "// %s",
+		},
+	},
 }

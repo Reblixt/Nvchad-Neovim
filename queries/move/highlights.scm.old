@@ -90,7 +90,7 @@
 (lambda_binding bind: (bind_var (variable_identifier)  @variable.parameter))
 ; (lambda_bindings (bind_var (variable_identifier)  @variable.parameter))
 
-;; Arguments
+;; Arguments 
 
 ;; Operators
 (binary_operator) @operator
@@ -119,17 +119,17 @@
   field: (field_identifier) ; [299, 12] - [299, 17]
   expr: (vector_expression)@variable.parameter)
 
-(arg_list) @variable.special
+(arg_list) @list
 (arg_list ; [41, 29] - [41, 63]
   (borrow_expression ; [41, 30] - [41, 49]
     expr: (name_expression ; [41, 35] - [41, 49]
       access: (module_access ; [41, 35] - [41, 49]
-        member: (identifier)@variable))))
+        member: (identifier)@list.variable))))
 
 (arg_list
-  (name_expression
+  (name_expression 
     access: (module_access ; [42, 38] - [42, 52]
-      member: (identifier)@variable)))
+      member: (identifier)@list.variable)))
 
 ; (match_expression "match") @keyword
 
