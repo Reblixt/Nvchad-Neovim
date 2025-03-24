@@ -25,12 +25,6 @@ local M = {
 		},
 	},
 
-	-- 	load_on_startup = true,
-	-- },
-
-	-- nvconfig = {
-	--
-	-- },
 	mason = {
 		pkgs = {
 			"eslint-lsp",
@@ -94,8 +88,8 @@ M.base46 = {
 		["@variable.parameter.move"] = { fg = "#E46876" },
 		["@property.move"] = { fg = "#E46876" },
 
-		["@list.variable.move"] = { fg = "#DCD7BA" },
-		["@list.move"] = { fg = "#E46876" },
+		-- ["@list.variable.move"] = { fg = "#DCD7BA" },
+		-- ["@list.move"] = { fg = "#E46876" },
 	},
 }
 

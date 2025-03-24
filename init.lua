@@ -72,6 +72,7 @@ move_config.move = {
 	filetype = "move",
 	used_by = { "move" },
 }
+
 -- if vim.g.rustaceanvim then
 -- 	local mason_registry = require("mason-registry")
 -- 	local codelldb = mason_registry.get_package("codelldb")
