@@ -12,6 +12,7 @@ o.linebreak = true
 o.wrap = false
 o.relativenumber = true
 o.cursorlineopt = "both" -- to enable cursorline!
+vim.opt.laststatus = 3
 
 vim.cmd([[ autocmd BufRead,BufNewFile *.slint set filetype=slint ]])
 vim.cmd("AWStart")
