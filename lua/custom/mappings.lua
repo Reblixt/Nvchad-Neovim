@@ -50,6 +50,10 @@ map("n", "<leader>ds", vim.diagnostic.setloclist, { desc = "LSP diagnostic locli
 -- map("n", "<leader>gt", "<cmd>Telescope git_status<CR>", { desc = "telescope git status" })
 -- map("n", "<leader>pt", "<cmd>Telescope terms<CR>", { desc = "telescope pick hidden term" })
 
+map("n", "<leader>fg", function()
+	require("fzf-lua").live_grep()
+end, { desc = "Find by grepping in project directory" })
+
 map("n", "<leader>th", function()
 	require("nvchad.themes").open()
 end, { desc = "telescope nvchad themes" })

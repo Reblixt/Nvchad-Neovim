@@ -3,61 +3,57 @@
 -- Please read that file to know all available options :(
 
 ---@type ChadrcConfig
-local M = {
-	plugins = {
-		cmp = {
-			enabled = false,
-		},
-		-- ["hrsh7th/nvim-cmp"] = {
-		-- 	enabled = false,
-		-- },
-	},
-	term = {
-		hl = "Normal:term,WinSeparator:WinSeparator",
-		sizes = { sp = 0.3, vsp = 0.2 },
-		float = {
-			relative = "editor",
-			row = 0.06,
-			col = 0.1,
-			width = 0.8,
-			height = 0.8,
-			border = "rounded",
-		},
-	},
+local M = {}
 
-	mason = {
-		pkgs = {
-			"eslint-lsp",
-			"prettierd",
-			"solhint",
-			"nomicfoundation-solidity-language-server",
-			"vtsls",
-			"rust-analyzer",
-			"tailwindcss-language-server",
-			"codelldb",
-			"css-lsp",
-			"html-lsp",
-		},
-	},
-	ui = {
-		statusline = {
-			theme = "minimal",
-		},
-		cmp = {
-			lspkind_text = true,
-			style = "default",
-			format_colors = {
-				tailwind = true,
-				icons = true,
-			},
-		},
+M.term = {
+	hl = "Normal:term,WinSeparator:WinSeparator",
+	sizes = { sp = 0.3, vsp = 0.2 },
+	float = {
+		relative = "editor",
+		row = 0.06,
+		col = 0.1,
+		width = 0.8,
+		height = 0.8,
+		border = "rounded",
 	},
 }
 
+M.mason = {
+	pkgs = {
+		"eslint-lsp",
+		"prettierd",
+		"solhint",
+		"nomicfoundation-solidity-language-server",
+		"vtsls",
+		"rust-analyzer",
+		"tailwindcss-language-server",
+		"codelldb",
+		"css-lsp",
+		"html-lsp",
+	},
+}
+M.ui = {
+	statusline = {
+		theme = "minimal",
+	},
+	cmp = {
+		lspkind_text = true,
+		style = "default",
+		format_colors = {
+			tailwind = true,
+			icons = true,
+		},
+	},
+	-- tabufline = {
+	-- 	hlgroup = {
+	-- 		spacing = { bg = "#1F1F28", fg = "#1F1F28" },
+	-- 	},
+	-- },
+}
 M.base46 = {
 
 	theme = "kanagawa",
-	transparency = true,
+	-- transparency = true,
 
 	hl_override = {
 		Comment = { italic = true },
@@ -65,6 +61,7 @@ M.base46 = {
 		Bold = { bold = true },
 	},
 	hl_add = {
+
 		-- Catppuccin
 		-- ["@function.name.move"] = { fg = "#04a5e5" },
 		-- ["@list.variable.move"] = { fg = "#bac2de" },
