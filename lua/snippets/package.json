@@ -7,6 +7,12 @@
           "solidity"
         ],
         "path": "./solidity.json"
+      },
+      {
+        "language": [
+          "typescript"
+        ],
+        "path": "./typescript.json"
       }
     ]
   }

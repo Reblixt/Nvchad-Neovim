@@ -2,7 +2,10 @@
 require("nvchad.configs.lspconfig").defaults()
 
 local lspconfig = require("lspconfig")
-local configs = require("nvchad.configs.lspconfig")
+-- local configs = require("nvchad.configs.lspconfig")
+
+local original_capabilities = vim.lsp.protocol.make_client_capabilities()
+local capabilities = require("blink.cmp").get_lsp_capabilities(original_capabilities)
 
 require("lspconfig").lua_ls.setup({
 	on_init = function(client)
@@ -71,9 +74,9 @@ local servers = {
 	},
 }
 for name, opts in pairs(servers) do
-	opts.on_init = configs.on_init
-	opts.on_attach = configs.on_attach
-	opts.capabilities = configs.capabilities
+	-- opts.on_init = configs.on_init
+	-- opts.on_attach = configs.on_attach
+	opts.capabilities = capabilities
 	require("lspconfig")[name].setup(opts)
 end
 

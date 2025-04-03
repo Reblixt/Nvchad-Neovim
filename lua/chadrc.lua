@@ -84,6 +84,7 @@ M.base46 = {
 		["@variable.special.move"] = { fg = "#E46876" },
 		["@variable.parameter.move"] = { fg = "#E46876" },
 		["@property.move"] = { fg = "#E46876" },
+		["LspSignatureActiveParameter"] = { bg = "#3B4261", fg = "#bac3de" },
 
 		-- ["@list.variable.move"] = { fg = "#DCD7BA" },
 		-- ["@list.move"] = { fg = "#E46876" },
