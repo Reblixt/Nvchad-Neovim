@@ -25,6 +25,7 @@ return {
 			"onsails/lspkind.nvim",
 			"moyiz/blink-emoji.nvim",
 			"MahanRahmati/blink-nerdfont.nvim",
+			-- "Kaiser-Yang/blink-cmp-avante",
 			{
 				"xzbdmw/colorful-menu.nvim",
 				opts = {
@@ -167,17 +168,40 @@ return {
 			sources = {
 				default = { "lazydev", "lsp", "snippets", "path", "buffer", "emoji", "nerdfont" },
 				providers = {
+					-- avante = {
+					--                     module = 'blink-cmp-avante',
+					--                     name = 'Avante',
+					--                     opts = {
+					--                         -- options for blink-cmp-avante
+					--                     }
+					--                 }
 					nerdfont = {
 						module = "blink-nerdfont",
 						name = "Nerd Fonts",
 						score_offset = 15, -- Tune by preference
 						opts = { insert = true }, -- Insert nerdfont icon (default) or complete its name
+						should_show_items = function()
+							return vim.tbl_contains(
+								-- Enable emoji completion only for git commits and markdown.
+								-- By default, enabled for all file-types.
+								{ "gitcommit", "markdown", "typescript" },
+								vim.o.filetype
+							)
+						end,
 					},
 					emoji = {
 						module = "blink-emoji",
 						name = "Emoji",
 						score_offset = 15, -- Tune by preference
 						opts = { insert = true },
+						should_show_items = function()
+							return vim.tbl_contains(
+								-- Enable emoji completion only for git commits and markdown.
+								-- By default, enabled for all file-types.
+								{ "gitcommit", "markdown", "typescript" },
+								vim.o.filetype
+							)
+						end,
 					},
 					lazydev = {
 						name = "LazyDev",

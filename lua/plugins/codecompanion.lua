@@ -17,13 +17,21 @@ return {
 						description = "Call tools and resources from the MCP Servers",
 					},
 				},
-				adapter = "deepseek",
+				adapter = "gemini",
 			},
 			inline = {
-				adapter = "anthropic",
+				adapter = "gemini",
 			},
 		},
 		adapters = {
+			gemini = function()
+				return require("codecompanion.adapters").extend("gemini", {
+					env = {
+						api_key = os.getenv("GEMINI_API_KEY"),
+					},
+					model = "schema.model.default",
+				})
+			end,
 			anthropic = function()
 				return require("codecompanion.adapters").extend("anthropic", {
 					env = {

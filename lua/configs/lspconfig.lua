@@ -46,6 +46,7 @@ local servers = {
 	eslint = {},
 	slint_lsp = {},
 	markdown_oxide = {},
+	prismals = {},
 	jsonls = {},
 	yamlls = {},
 	move_analyzer = {
