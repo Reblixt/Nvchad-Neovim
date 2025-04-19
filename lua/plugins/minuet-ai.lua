@@ -1,0 +1,105 @@
+return {
+	{
+		"milanglacier/minuet-ai.nvim",
+		-- Load the plugin ONLY when an LSP client attaches to a buffer
+		event = "LspAttach",
+		opts = {
+			-- Your existing opts here...
+			virtualtext = {
+				auto_trigger_ft = {},
+				keymap = {
+					accept = "<C-f>",
+					accept_line = "<C-l>",
+					accept_n_lines = "<A-z>",
+					prev = "<A-[>",
+					next = "<A-]>",
+					dismiss = "<A-e>",
+				},
+			},
+			provider = "openai_fim_compatible",
+			n_completions = 1,
+			context_window = 2000,
+			provider_options = {
+				openai_fim_compatible = {
+					api_key = "TERM",
+					name = "Ollama",
+					end_point = "http://localhost:11434/v1/completions",
+					model = "qwen2.5-coder",
+					optional = {
+						max_tokens = 56,
+						top_p = 0.9,
+					},
+				},
+			},
+		},
+		config = function(_, opts)
+			require("minuet").setup(opts)
+			-- Enable virtual text when the plugin is configured (after LspAttach)
+			-- Using silent! is still good practice here.
+			vim.api.nvim_command("silent! Minuet virtualtext enable")
+			vim.notify("Minuet AI virtual text enabled via LspAttach.", vim.log.levels.INFO, { title = "Minuet AI" }) -- Optional: Add a notification to confirm
+		end,
+	},
+}
+-- return {
+-- 	{
+-- 		"milanglacier/minuet-ai.nvim",
+-- 		-- Load when entering *any* buffer (might load slightly more often)
+-- 		event = { "BufReadPost", "BufNewFile", "BufEnter" },
+-- 		opts = {
+-- 			-- Your existing opts here...
+-- 			virtualtext = {
+-- 				auto_trigger_ft = {},
+-- 				keymap = {
+-- 					accept = "<C-f>",
+-- 					accept_line = "<C-l>",
+-- 					accept_n_lines = "<A-z>",
+-- 					prev = "<A-g>",
+-- 					next = "<A-r>",
+-- 					dismiss = "<A-e>",
+-- 				},
+-- 			},
+-- 			provider = "openai_fim_compatible",
+-- 			n_completions = 1,
+-- 			context_window = 900,
+-- 			provider_options = {
+-- 				openai_fim_compatible = {
+-- 					api_key = "TERM",
+-- 					name = "Ollama",
+-- 					end_point = "http://localhost:11434/v1/completions",
+-- 					model = "qwen2.5-coder",
+-- 					optional = {
+-- 						max_tokens = 56,
+-- 						top_p = 0.9,
+-- 					},
+-- 				},
+-- 			},
+-- 		},
+-- 		config = function(_, opts)
+-- 			-- Only run the setup in the config function
+-- 			require("minuet").setup(opts)
+--
+-- 			-- Define an autocommand group to manage our autocommand
+-- 			local minuet_aug = vim.api.nvim_create_augroup("MinuetEnableGroup", { clear = true })
+--
+-- 			-- Create an autocommand that enables virtual text when entering *any* buffer
+-- 			-- *after* the plugin has been configured.
+-- 			vim.api.nvim_create_autocmd("BufEnter", {
+-- 				group = minuet_aug,
+-- 				pattern = "*", -- Apply to all buffers initially
+-- 				callback = function()
+-- 					-- Optional: Add checks here if needed, e.g., buffer type or filetype
+-- 					-- local buftype = vim.bo.buftype
+-- 					-- local filetype = vim.bo.filetype
+-- 					-- if buftype == "" and filetype ~= "" and filetype ~= "TelescopePrompt" then
+-- 					-- Check if Minuet is loaded before trying to enable
+-- 					if package.loaded["minuet"] then
+-- 						vim.api.nvim_command("silent! Minuet virtualtext enable")
+-- 					end
+-- 					-- end
+-- 				end,
+-- 			})
+-- 			vim.notify("Minuet AI configured. Will enable on BufEnter.", vim.log.levels.INFO, { title = "Minuet AI" })
+-- 		end,
+-- 	},
+-- }

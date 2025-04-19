@@ -16,3 +16,8 @@ vim.opt.laststatus = 3
 
 vim.cmd([[ autocmd BufRead,BufNewFile *.slint set filetype=slint ]])
 vim.cmd("AWStart")
+-- NOTE: Ensures that when exiting NeoVim, Zellij returns to normal mode
+vim.api.nvim_create_autocmd("VimLeave", {
+	pattern = "*",
+	command = "silent !zellij action switch-mode normal",
+})

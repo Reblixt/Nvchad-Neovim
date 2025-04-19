@@ -10,6 +10,7 @@ local options = {
 		tsx = { "prettierd" },
 		prisma = { "prettierd" },
 		http = { "prettierd" },
+		toml = { "prettierd" },
 		move = { "prettier-move" },
 	},
 

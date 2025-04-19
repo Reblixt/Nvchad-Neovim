@@ -73,6 +73,22 @@ move_config.move = {
 	used_by = { "move" },
 }
 
+-- if vim.g.vscode then
+-- 	-- VSCode extension
+-- end
+-- vim.g.clipboard = {
+--   name = 'wl-clipboard',
+--   copy = {
+--     ['+'] = 'wl-copy',
+--     ['*'] = 'wl-copy',
+--   },
+--   paste = {
+--     ['+'] = 'wl-paste --no-newline',
+--     ['*'] = 'wl-paste --no-newline',
+--   },
+--   cache_enabled = 0,
+-- }
+
 -- if vim.g.rustaceanvim then
 -- 	local mason_registry = require("mason-registry")
 -- 	local codelldb = mason_registry.get_package("codelldb")

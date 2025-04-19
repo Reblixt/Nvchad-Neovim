@@ -49,6 +49,7 @@ local servers = {
 	prismals = {},
 	jsonls = {},
 	yamlls = {},
+	kulala_ls = {},
 	move_analyzer = {
 		filetypes = { "move" },
 		cmd = { "move-analyzer" },
