@@ -1,0 +1,29 @@
+return {
+	"luckasRanarison/tailwind-tools.nvim",
+	name = "tailwind-tools",
+	build = ":UpdateRemotePlugins",
+	event = { "BufRead", "BufNewFile" },
+	dependencies = {
+		"nvim-treesitter/nvim-treesitter",
+		"nvim-telescope/telescope.nvim",
+		"neovim/nvim-lspconfig",
+	},
+	opts = {
+		server = {
+			override = true,
+			settings = {
+				emmetCompletions = true,
+				includeLanguages = { clojure = "html", clojurescript = "html" },
+				experimental = {
+					classRegex = {
+						{ "\\[:[^.\\s]*((?:\\.[^.\\s\\]]*)+)[\\s\\]]", "\\.([^.]*)" },
+						{ "\\:class\\s+(\\:[^\\s\\}]*)[\\s\\}]", "[\\:.]([^.]*)" },
+						{ '\\:class\\s+("[^\\}"]*)"', '["\\s]([^\\s"]*)' },
+						{ "\\:class\\s+\\[([\\s\\S]*)\\]", '["\\:]([^\\s"]*)["]?' },
+						{ "\\:class\\s+'\\[([\\s\\S]*)\\]", "([^\\s]*)?" },
+					},
+				},
+			},
+		},
+	},
+}

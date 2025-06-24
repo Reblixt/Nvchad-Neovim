@@ -21,3 +21,10 @@ vim.api.nvim_create_autocmd("VimLeave", {
 	pattern = "*",
 	command = "silent !zellij action switch-mode normal",
 })
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+	pattern = "*.prisma",
+	callback = function()
+		vim.bo.filetype = "prisma"
+	end,
+	desc = "Set filetype for .prisma files",
+})

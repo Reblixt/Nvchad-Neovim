@@ -53,12 +53,12 @@ return {
 			require("colorizer").setup()
 		end,
 	},
-	{
-		"L3MON4D3/LuaSnip",
-		dependencies = { "rafamadriz/friendly-snippets" },
-		lazy = false,
-		require("luasnip.loaders.from_vscode").lazy_load({ paths = "~/.config/nvim/snippets" }),
-	},
+	-- {
+	-- 	"L3MON4D3/LuaSnip",
+	-- 	dependencies = { "rafamadriz/friendly-snippets" },
+	-- 	lazy = false,
+	-- 	require("luasnip.loaders.from_vscode").lazy_load({ paths = "~/.config/nvim/snippets" }),
+	-- },
 	-- lazy.nvim
 	-- {
 	-- 	"adelarsq/image_preview.nvim",

@@ -28,11 +28,13 @@ end, { desc = "general format file" })
 
 -- Ai Code Companion
 map("n", "<leader>at", "<cmd>CodeCompanionChat Toggle<CR>", { desc = "Toggle Ai chat" })
-map("n", "<leader>ai", ":CodeCompanion<CR>", { desc = "Inline assistant" })
+map({ "n", "v" }, "<leader>ai", ":CodeCompanion<CR>", { desc = "Inline assistant" })
 map("n", "<leader>aib", ":CodeCompanion /buffer", { desc = "Inline assistant" })
 map("v", "<leader>aa", ":CodeCompanionChat Add<CR>", { desc = "Add marked text to Ai chat" })
 map("n", "<leader>aa", ":CodeCompanionChat<CR>", { desc = "Add marked text to Ai chat" })
+map({ "n", "v" }, "<leader>ap", ":CodeCompanionActions<CR>", { desc = "Add marked text to Ai chat" })
 
+map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP code action" })
 -- global lsp mappings
 map("n", "<leader>ds", vim.diagnostic.setloclist, { desc = "LSP diagnostic loclist" })
 -- nvimtree
@@ -106,7 +108,7 @@ end, { desc = "whichkey query lookup" })
 local function quit_with_check()
 	local unsaved = false
 	for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-		if vim.api.nvim_buf_get_option(buf, "modified") then
+		if vim.bo[buf].modified then
 			unsaved = true
 			break
 		end
@@ -201,8 +203,14 @@ map("v", ">", ">gv", { noremap = true, silent = true, desc = "Indent right" })
 --- Diagnostics
 map("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Open diagnostics" })
 map("n", "<leader>xx", vim.diagnostic.setloclist, { desc = "Open diagnostics in loclist" })
-map("n", "<leader>xn", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
-map("n", "<leader>xh", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
+map("n", "<leader>xn", function()
+	vim.diagnostic.jump({ count = 1, float = false })
+end, { desc = "Go to next diagnostic" })
+map("n", "<leader>xh", function()
+	vim.diagnostic.jump({ count = -1, float = false })
+end, { desc = "Go to previous diagnostic" })
+-- map("n", "<leader>xn", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
+-- map("n", "<leader>xh", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
 
 -- Panel/Window management
 map("n", "<leader>|", ":vsplit<CR>", { silent = true, desc = "Vertical split" })

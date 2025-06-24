@@ -40,15 +40,137 @@ require("lspconfig").lua_ls.setup({
 })
 -- EXAMPLE
 local servers = {
+	pyright = {},
+	gopls = {},
 	html = {},
 	cssls = {},
-	tailwindcss = {},
+	tailwindcss = {
+		filetypes = {
+			-- html
+			"aspnetcorerazor",
+			"astro",
+			"astro-markdown",
+			"blade",
+			"clojure",
+			"django-html",
+			"htmldjango",
+			"edge",
+			"eelixir", -- vim ft
+			"elixir",
+			"ejs",
+			"erb",
+			"eruby", -- vim ft
+			"gohtml",
+			"gohtmltmpl",
+			"haml",
+			"handlebars",
+			"hbs",
+			"html",
+			"htmlangular",
+			"html-eex",
+			"heex",
+			"jade",
+			"leaf",
+			"liquid",
+			"markdown",
+			"mdx",
+			"mustache",
+			"njk",
+			"nunjucks",
+			"php",
+			"razor",
+			"slim",
+			"twig",
+			-- css
+			"css",
+			"less",
+			"postcss",
+			"sass",
+			"scss",
+			"stylus",
+			"sugarss",
+			-- js
+			"javascript",
+			"javascriptreact",
+			"reason",
+			"rescript",
+			"typescript",
+			"typescriptreact",
+			-- mixed
+			"vue",
+			"svelte",
+			"templ",
+			"rust",
+		},
+		settings = {
+			tailwindCSS = {
+				validate = true,
+				lint = {
+					cssConflict = "warning",
+					invalidApply = "error",
+					invalidScreen = "error",
+					invalidVariant = "error",
+					invalidConfigPath = "error",
+					invalidTailwindDirective = "error",
+					recommendedVariantOrder = "warning",
+				},
+				classAttributes = {
+					"class",
+					"className",
+					"class:list",
+					"classList",
+					"ngClass",
+				},
+				includeLanguages = {
+					eelixir = "html-eex",
+					eruby = "erb",
+					templ = "html",
+					htmlangular = "html",
+				},
+				experimental = {
+					classRegex = { 'class\\s*:\\s*"([^"]*)' },
+				},
+			},
+		},
+		-- filetypes = {
+		-- 	"rust",
+		-- },
+		-- init_options = {
+		-- 	userLanguages = {
+		-- 		rust = "html",
+		-- 	},
+		-- },
+		-- settings = {
+		-- 	tailwindCSS = {
+		-- 		settings = {
+		-- 			experimental = {
+		-- 				classRegex = {
+		-- 					{ "\\[:[^.\\s]*((?:\\.[^.\\s\\]]*)+)[\\s\\]]", "\\.([^.]*)" },
+		-- 					{ "\\:class\\s+(\\:[^\\s\\}]*)[\\s\\}]", "[\\:.]([^.]*)" },
+		-- 					{ '\\:class\\s+("[^\\}"]*)"', '["\\s]([^\\s"]*)' },
+		-- 					{ "\\:class\\s+\\[([\\s\\S]*)\\]", '["\\:]([^\\s"]*)["]?' },
+		-- 					{ "\\:class\\s+'\\[([\\s\\S]*)\\]", "([^\\s]*)?" },
+		-- 				},
+		-- 			},
+		-- 		},
+		-- 	},
+		-- },
+	},
 	eslint = {},
 	slint_lsp = {},
 	markdown_oxide = {},
+	-- vscode_css_language_server = {},
 	prismals = {},
 	jsonls = {},
 	yamlls = {},
+	docker_compose_language_service = {
+		filetypes = { "yaml.docker_compose" },
+		root_dir = lspconfig.util.root_pattern("docker-compose.yml", "docker-compose.yaml"),
+	},
+	dockerls = {
+		filetypes = { "dockerfile" },
+		root_dir = lspconfig.util.root_pattern("Dockerfile"),
+	},
 	kulala_ls = {},
 	move_analyzer = {
 		filetypes = { "move" },
