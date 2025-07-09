@@ -104,57 +104,19 @@ local servers = {
 		},
 		settings = {
 			tailwindCSS = {
-				validate = true,
-				lint = {
-					cssConflict = "warning",
-					invalidApply = "error",
-					invalidScreen = "error",
-					invalidVariant = "error",
-					invalidConfigPath = "error",
-					invalidTailwindDirective = "error",
-					recommendedVariantOrder = "warning",
-				},
-				classAttributes = {
-					"class",
-					"className",
-					"class:list",
-					"classList",
-					"ngClass",
-				},
 				includeLanguages = {
 					eelixir = "html-eex",
 					eruby = "erb",
 					templ = "html",
 					htmlangular = "html",
+					rust = "html",
 				},
 				experimental = {
-					classRegex = { 'class\\s*:\\s*"([^"]*)' },
+					-- 			classRegex = { 'class\\s*:\\s*"([^"]*)' },
+					classRegex = { 'class: "(.*)"' },
 				},
 			},
 		},
-		-- filetypes = {
-		-- 	"rust",
-		-- },
-		-- init_options = {
-		-- 	userLanguages = {
-		-- 		rust = "html",
-		-- 	},
-		-- },
-		-- settings = {
-		-- 	tailwindCSS = {
-		-- 		settings = {
-		-- 			experimental = {
-		-- 				classRegex = {
-		-- 					{ "\\[:[^.\\s]*((?:\\.[^.\\s\\]]*)+)[\\s\\]]", "\\.([^.]*)" },
-		-- 					{ "\\:class\\s+(\\:[^\\s\\}]*)[\\s\\}]", "[\\:.]([^.]*)" },
-		-- 					{ '\\:class\\s+("[^\\}"]*)"', '["\\s]([^\\s"]*)' },
-		-- 					{ "\\:class\\s+\\[([\\s\\S]*)\\]", '["\\:]([^\\s"]*)["]?' },
-		-- 					{ "\\:class\\s+'\\[([\\s\\S]*)\\]", "([^\\s]*)?" },
-		-- 				},
-		-- 			},
-		-- 		},
-		-- 	},
-		-- },
 	},
 	eslint = {},
 	slint_lsp = {},
