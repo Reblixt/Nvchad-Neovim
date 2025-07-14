@@ -1,10 +1,15 @@
 # Nvchad-Neovim
 
 ## To install sui Move 
-Make sure to have Rust, Nodejs and Brew installed on your linux/mac machine.
+### Prerequisites
 ```bash 
-brew install sui
-cargo install --git https://github.com/MystenLabs/sui sui-move-lsp
+# Install Rust 
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# Install Sui binaries with Cargo
+cargo install --locked --git https://github.com/MystenLabs/sui.git --branch mainnet sui --features tracing
+
+# Install Sui Move CLI formatter that neovims prettier plugin will use
 sudo npm i -g prettier @mysten/prettier-plugin-move
 
 ```
