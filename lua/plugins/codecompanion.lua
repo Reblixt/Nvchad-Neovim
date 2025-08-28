@@ -6,6 +6,9 @@ return {
 		"nvim-lua/plenary.nvim",
 		"nvim-treesitter/nvim-treesitter",
 	},
+
+	-- `adapters.<adapter_name>` and `adapters.opts` is deprecated, use `adapters.http.<adapter_name>` and `adapters.http.opts` instead.
+	-- Feature will be removed in CodeCompanion v18.0.0
 	opts = {
 
 		-- General settings
@@ -79,53 +82,55 @@ return {
 
 		--- Adapters
 		adapters = {
-			gemini = function()
-				return require("codecompanion.adapters").extend("gemini", {
-					env = {
-						api_key = os.getenv("GOOGLE_AI_API_KEY"),
-					},
-					model = "schema.model.default",
-				})
-			end,
-			anthropic = function()
-				return require("codecompanion.adapters").extend("anthropic", {
-					env = {
-						api_key = os.getenv("ANTHROPIC_API_KEY"),
-					},
-				})
-			end,
-			deepseek = function()
-				return require("codecompanion.adapters").extend("ollama", {
-					name = "deepseek-8b", -- Give this adapter a different name to differentiate it from the default ollama adapter
-					schema = {
-						model = {
-							default = "deepseek-r1:8b",
+			http = {
+				gemini = function()
+					return require("codecompanion.adapters").extend("gemini", {
+						env = {
+							api_key = os.getenv("GOOGLE_AI_API_KEY"),
 						},
-						num_ctx = {
-							default = 16384,
+						model = "schema.model.default",
+					})
+				end,
+				anthropic = function()
+					return require("codecompanion.adapters").extend("anthropic", {
+						env = {
+							api_key = os.getenv("ANTHROPIC_API_KEY"),
 						},
-						num_predict = {
-							default = -1,
+					})
+				end,
+				deepseek = function()
+					return require("codecompanion.adapters").extend("ollama", {
+						name = "deepseek-8b", -- Give this adapter a different name to differentiate it from the default ollama adapter
+						schema = {
+							model = {
+								default = "deepseek-r1:8b",
+							},
+							num_ctx = {
+								default = 16384,
+							},
+							num_predict = {
+								default = -1,
+							},
 						},
-					},
-				})
-			end,
-			gemma = function()
-				return require("codecompanion.adapters").extend("ollama", {
-					name = "gemma-4b", -- Give this adapter a different name to differentiate it from the default ollama adapter
-					schema = {
-						model = {
-							default = "gemma3:4b",
+					})
+				end,
+				gemma = function()
+					return require("codecompanion.adapters").extend("ollama", {
+						name = "gemma-4b", -- Give this adapter a different name to differentiate it from the default ollama adapter
+						schema = {
+							model = {
+								default = "gemma3:4b",
+							},
+							num_ctx = {
+								default = 16384,
+							},
+							num_predict = {
+								default = -1,
+							},
 						},
-						num_ctx = {
-							default = 16384,
-						},
-						num_predict = {
-							default = -1,
-						},
-					},
-				})
-			end,
+					})
+				end,
+			},
 		},
 	},
 }

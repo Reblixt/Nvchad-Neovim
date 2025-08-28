@@ -33,15 +33,15 @@ return {
 			map("n", "<Leader>ca", "<cmd>lua vim.cmd('RustLsp codeAction')<CR>", { desc = "Debugger codeAction" })
 			map("n", "<Leader>cr", "<cmd>lua vim.cmd('vim.lsp.buf.rename()')<CR>", { desc = "Rename" })
 			map("n", "<Leader>gp", "<cmd>lua vim.cmd('RustLsp parentModule')<CR>", { desc = "Go to ParentModule" })
-			-- map("n", "gd", "<cmd>lua vim.cmd('Telescope lsp_definitions')<CR>", { desc = "Go to definition" })
-			-- map("n", "gt", "<cmd>lua vim.cmd('Telescope lsp_type_definitions')<CR>", { desc = "Go to type definition" })
 			map(
 				"n",
 				"<leader>cd",
 				"<cmd>lua vim.cmd('RustLsp renderDiagnostic')<CR>",
 				{ desc = "Debugger hover actions" }
 			)
-			map("n", "<leader>ce", "<cmd>lua vim.cmd('RustLsp explainError')<CR>", { desc = "Explain Error" })
+			map("n", "<leader>ce", function()
+				vim.cmd.RustLsp({ "explainError", "current" })
+			end)
 			map(
 				"n",
 				"<leader>xe",
@@ -54,37 +54,9 @@ return {
 				"<cmd>lua vim.cmd.RustLsp('relatedDiagnostics')<CR>",
 				{ desc = "Related Diagnostics" }
 			)
-			-- 	map("n", "K", function()
-			-- 		vim.cmd.RustLsp("hover", "actions")
-			-- 	end, { silent = true, buffer = bufnr })
-			-- 	-- or vim.lsp.buf.codeAction() if you don't want grouping.
-			--
-			-- local on_attach = require("lspconfig").on_attach
-			-- local capabilities = require("lspconfig").capabilities
-			-- vim.g.rustaceanvim = {
-			-- 	-- settings = {
-			-- 	--   ["rust-analyzer"] = {
-			-- 	--     -- Other Settings ...
-			-- 	--     procMacro = {
-			-- 	--       ignored = {
-			-- 	--         leptos_macro = {
-			-- 	--           -- optional: --
-			-- 	--           -- "component",
-			-- 	--           "server",
-			-- 	--         },
-			-- 	--       },
-			-- 	--     },
-			-- 	--   },
-			-- 	-- },
-			-- 	tools = {},
-			-- 	server = {
-			-- 		-- on_attach = on_attach,
-			-- 		-- capabilities = capabilities,
-			-- 	},
-			-- 	dap = {
-			-- 		adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path),
-			-- 	},
-			-- }
+			map("n", "K", function()
+				vim.cmd.RustLsp({ "hover", "actions" })
+			end)
 		end,
 	},
 

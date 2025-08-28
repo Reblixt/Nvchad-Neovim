@@ -175,19 +175,6 @@ map("n", "<Leader>du", "<cmd>lua require'dapui'.toggle()<CR>", { desc = "Debugge
 -- map("n", "<Leader>dl", "<cmd>lua require'dapui'.float_element('watches')<CR>", { desc = "Debugger toggle" })
 -- map("n", "<Leader>dl", "<cmd>lua require'dapui'.eval()<CR>", { desc = "Debugger toggle" })
 map("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", { desc = "Show hover doc" })
--- map("n", "K", "<cmd>lua vim.cmd('RustLsp hover actions')<CR>", { desc = "Debugger hover actions" })
-
--- rustaceanvim
--- map("n", "<Leader>dt", "<cmd>lua vim.cmd('RustLsp testables')<CR>", { desc = "Debugger testables" })
--- map("n", "<Leader>ca", "<cmd>lua vim.cmd('RustLsp codeAction')<CR>", { desc = "Debugger codeAction" })
--- map("n", "<Leader>gp", "<cmd>lua vim.cmd('RustLsp parentModule')<CR>", { desc = "Go to ParentModule" })
--- 	vim.cmd.RustLsp("codeAction") -- supports rust-analyzer's grouping
--- end, { silent = true, buffer = bufnr })
---
--- map("n", "K", function()
--- 	vim.cmd.RustLsp("hover", "actions")
--- end, { silent = true, buffer = bufnr })
--- Move line up and down with Alt-j
 map("n", "<A-k>", ":m .-2<CR>==", { noremap = true, silent = true, desc = "Move line up" })
 map("v", "<A-k>", ":m '<-2<CR>gv=gv", { noremap = true, silent = true, desc = "Move line up" })
 map("n", "<A-j>", ":m .+1<CR>==", { noremap = true, silent = true, desc = "Move line down" })
