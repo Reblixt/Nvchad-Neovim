@@ -3,24 +3,49 @@ return {
 		"mrcjkb/rustaceanvim",
 		version = "^6", -- Recommended
 		ft = { "rust" },
+		init = function()
+			vim.g.rustaceanvim = {
+				server = {
+					settings = {
+						["rust-analyzer"] = {
+							inlayHints = {
+								bindingModeHints = {
+									enable = false,
+								},
+								chainingHints = {
+									enable = true,
+								},
+								closingBraceHints = {
+									enable = true,
+									minLines = 25,
+								},
+								closureReturnTypeHints = {
+									enable = "never",
+								},
+								lifetimeElisionHints = {
+									enable = "never",
+									useParameterNames = false,
+								},
+								maxLength = 25,
+								parameterHints = {
+									enable = true,
+								},
+								reborrowHints = {
+									enable = "never",
+								},
+								renderColons = true,
+								typeHints = {
+									enable = true,
+									hideClosureInitialization = false,
+									hideNamedConstructor = false,
+								},
+							},
+						},
+					},
+				},
+			}
+		end,
 
-		-- lazy = true, -- This plugin is already lazy
-		-- ["rust-analyzer"] = {
-		-- 	procMacro = {
-		-- 		ignored = {
-		-- 			leptos_macro = {
-		-- 				-- optional: --
-		-- 				-- "component",
-		-- 				"server",
-		-- 			},
-		-- 		},
-		-- 	},
-		-- 	cargo = {
-		-- 		allfeatures = true,
-		-- 	},
-		-- },
-		-- ft = { "rust" },
-		-- dependencies = "neovim/nvim-lspconfig",
 		config = function()
 			-- local mason_registry = require("mason-registry")
 			-- local codelldb = mason_registry.get_package("codelldb")

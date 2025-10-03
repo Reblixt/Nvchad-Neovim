@@ -1,3 +1,4 @@
+-- local huggingface = require "codecompanion.adapters.http.huggingface"
 return {
 	"olimorris/codecompanion.nvim",
 	event = "BufRead",
@@ -32,21 +33,21 @@ return {
 		},
 
 		-- extensions
-		extensions = {
-			mcphub = {
-				callback = "mcphub.extensions.codecompanion",
-				opts = {
-					show_result_in_chat = true, -- Show mcp tool results in chat
-					make_vars = true, -- Convert resources to #variables
-					make_slash_commands = true, -- Add prompts as /slash commands
-				},
-			},
-		},
+		-- extensions = {
+		-- 	mcphub = {
+		-- 		callback = "mcphub.extensions.codecompanion",
+		-- 		opts = {
+		-- 			show_result_in_chat = true, -- Show mcp tool results in chat
+		-- 			make_vars = true, -- Convert resources to #variables
+		-- 			make_slash_commands = true, -- Add prompts as /slash commands
+		-- 		},
+		-- 	},
+		-- },
 
 		--- Strategies
 		strategies = {
 			chat = {
-				adapter = "gemini",
+				adapter = "openrouter",
 				tools = {
 					-- ["mcp"] = {
 					-- 	callback = require("mcphub.extensions.codecompanion"),
@@ -66,7 +67,7 @@ return {
 				},
 			},
 			inline = {
-				adapter = "gemini",
+				adapter = "openrouter",
 				keymaps = {
 					accept_change = {
 						modes = { n = "ga" },
@@ -126,6 +127,41 @@ return {
 							},
 							num_predict = {
 								default = -1,
+							},
+						},
+					})
+				end,
+
+				cerebras = function()
+					return require("codecompanion.adapters").extend("openai_compatible", {
+						name = "cerebras",
+						formatted_name = "Cerebras",
+						env = {
+							api_key = os.getenv("CEREBRAS_API_KEY"),
+							url = "https://api.cerebras.ai",
+							chat_url = "/v1/chat/completions",
+							models_endpoint = "/v1/models",
+						},
+						schema = {
+							model = {
+								default = "qwen-3-235b-a22b-instruct-2507",
+							},
+						},
+					})
+				end,
+				openrouter = function()
+					return require("codecompanion.adapters").extend("openai_compatible", {
+						name = "openrouter",
+						formatted_name = "OpenRouter",
+						env = {
+							api_key = os.getenv("OPENROUTER_API_KEY"),
+							url = "https://openrouter.ai/api",
+							chat_url = "/v1/chat/completions",
+							models_endpoint = "/v1/models",
+						},
+						schema = {
+							model = {
+								default = "qwen/qwen3-coder", -- or any OpenRouter model
 							},
 						},
 					})

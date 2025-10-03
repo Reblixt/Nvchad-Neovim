@@ -35,7 +35,11 @@ require("lspconfig").lua_ls.setup({
 		})
 	end,
 	settings = {
-		Lua = {},
+		Lua = {
+			hint = {
+				enable = true,
+			},
+		},
 	},
 })
 -- EXAMPLE
@@ -44,6 +48,10 @@ local servers = {
 	gopls = {},
 	html = {},
 	cssls = {},
+	nil_ls = {},
+	-- rnix = {
+	-- 	filetypes = { "nix" },
+	-- },
 	tailwindcss = {
 		filetypes = {
 			-- html
@@ -139,6 +147,18 @@ local servers = {
 		cmd = { "move-analyzer" },
 		root_dir = lspconfig.util.root_pattern("Move.toml"),
 		single_file_support = true,
+		settings = {
+			["move-analyzer"] = {
+				inlayHints = {
+					typeHints = {
+						enable = true,
+					},
+					parameterHints = {
+						enable = true,
+					},
+				},
+			},
+		},
 	},
 	solidity_ls_nomicfoundation = {
 		filetypes = { "solidity" },
@@ -153,10 +173,34 @@ local servers = {
 	},
 	denols = {
 		root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+		settings = {
+			deno = {
+				inlayHints = {
+					parameterNames = { enabled = "all", suppressWhenArgumentMatchesName = true },
+					parameterTypes = { enabled = true },
+					variableTypes = { enabled = true, suppressWhenTypeMatchesName = true },
+					propertyDeclarationTypes = { enabled = true },
+					functionLikeReturnTypes = { enable = true },
+					enumMemberValues = { enabled = true },
+				},
+			},
+		},
 	},
 	vtsls = {
 		root_dir = lspconfig.util.root_pattern("package.json"),
 		single_file_support = false,
+		settings = {
+			typescript = {
+				inlayHints = {
+					parameterNames = { enabled = "all" },
+					parameterTypes = { enabled = true },
+					variableTypes = { enabled = true },
+					propertyDeclarationTypes = { enabled = true },
+					functionLikeReturnTypes = { enabled = true },
+					enumMemberValues = { enabled = true },
+				},
+			},
+		},
 	},
 }
 for name, opts in pairs(servers) do

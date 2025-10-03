@@ -6,7 +6,7 @@ return {
 	opts = {
 		bigfile = { enabled = true },
 		debug = { enabled = true },
-		dashboard = { enabled = true },
+		dashboard = { enabled = false },
 		indent = { enabled = true },
 		input = { enabled = true },
 		terminal = { enabled = false },

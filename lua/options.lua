@@ -14,8 +14,9 @@ o.relativenumber = true
 o.cursorlineopt = "both" -- to enable cursorline!
 vim.opt.laststatus = 3
 
+-- vim.lsp.inlay_hint.enable(true)
 vim.cmd([[ autocmd BufRead,BufNewFile *.slint set filetype=slint ]])
-vim.cmd("AWStart")
+-- vim.cmd("AWStart")
 -- NOTE: Ensures that when exiting NeoVim, Zellij returns to normal mode
 vim.api.nvim_create_autocmd("VimLeave", {
 	pattern = "*",

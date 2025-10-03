@@ -16,6 +16,7 @@ local options = {
 		dockerfile = { "hadolint" },
 		yaml = { "prettierd" },
 		go = { "gofmt" },
+    nix = {"nixfmt"},
 	},
 
 	format_on_save = {
