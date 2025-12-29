@@ -29,3 +29,5 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 	end,
 	desc = "Set filetype for .prisma files",
 })
+
+-- vim.lsp.set_log_level("debug")

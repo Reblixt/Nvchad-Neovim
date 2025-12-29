@@ -5,6 +5,7 @@ return {
 	---@type snacks.Config
 	opts = {
 		bigfile = { enabled = true },
+		gh = {},
 		debug = { enabled = true },
 		dashboard = { enabled = false },
 		indent = { enabled = true },
@@ -22,6 +23,7 @@ return {
 			},
 		},
 		git = { enabled = true },
+		gitbrowse = { enabled = true },
 		-- profiler = { enabled = },
 		quickfile = { enabled = true },
 		scroll = { enabled = false },
@@ -33,6 +35,49 @@ return {
 		},
 	},
 	keys = {
+		{
+			"<leader>gi",
+			function()
+				Snacks.picker.gh_issue()
+			end,
+			desc = "GitHub Issues (open)",
+		},
+		{
+			"<leader>gd",
+			function()
+				Snacks.picker.git_diff()
+			end,
+			desc = "Git Diff (Hunks)",
+		},
+		{
+			"<leader>go",
+			function()
+				Snacks.gh.open()
+			end,
+			desc = "GitHub Isses/PRs in Buffer",
+		},
+
+		{
+			"<leader>gI",
+			function()
+				Snacks.picker.gh_issue({ state = "all" })
+			end,
+			desc = "GitHub Issues (all)",
+		},
+		{
+			"<leader>gp",
+			function()
+				Snacks.picker.gh_pr()
+			end,
+			desc = "GitHub Pull Requests (open)",
+		},
+		{
+			"<leader>gP",
+			function()
+				Snacks.picker.gh_pr({ state = "all" })
+			end,
+			desc = "GitHub Pull Requests (all)",
+		},
 		{
 			"<leader>z",
 			function()

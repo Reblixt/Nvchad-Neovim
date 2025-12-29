@@ -73,6 +73,14 @@ move_config.move = {
 	filetype = "move",
 	used_by = { "move" },
 }
+vim.filetype.add({
+	extension = {
+		move = "move",
+	},
+	filename = {
+		["Move.toml"] = "toml",
+	},
+})
 
 -- if vim.g.vscode then
 -- 	-- VSCode extension

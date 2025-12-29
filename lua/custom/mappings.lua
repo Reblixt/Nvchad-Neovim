@@ -40,6 +40,8 @@ map({ "n", "v" }, "<leader>ap", ":CodeCompanionActions<CR>", { desc = "Add marke
 map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP code action" })
 -- global lsp mappings
 map("n", "<leader>ds", vim.diagnostic.setloclist, { desc = "LSP diagnostic loclist" })
+
+map("n", "<leader>cc", "<CMD>Nvumi<CR>", { desc = "[O]pen [N]vumi" })
 -- nvimtree
 -- map("n", "<C-n>", "<cmd><CR>", { desc = "nvimtree toggle window" })
 -- map("n", "<leader>e", "<cmd>NvimTreeFocus<CR>", { desc = "nvimtree focus window" })

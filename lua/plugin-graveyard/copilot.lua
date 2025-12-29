@@ -35,7 +35,7 @@ return {
 	{
 		"copilotlsp-nvim/copilot-lsp",
 		init = function()
-			vim.g.copilot_nes_debounce = 500
+			vim.g.copilot_nes_debounce = 750
 		end,
 	},
 }

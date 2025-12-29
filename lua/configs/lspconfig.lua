@@ -108,7 +108,7 @@ local servers = {
 			"vue",
 			"svelte",
 			"templ",
-			"rust",
+			-- "rust",
 		},
 		settings = {
 			tailwindCSS = {
@@ -125,6 +125,19 @@ local servers = {
 				},
 			},
 		},
+		root_dir = function(fname)
+			-- Use the built-in root pattern function
+			return require("lspconfig.util").root_pattern(
+				"tailwind.config.js",
+				"tailwind.config.cjs",
+				"tailwind.config.mjs",
+				"tailwind.config.ts",
+				"postcss.config.js",
+				"postcss.config.cjs",
+				"postcss.config.mjs",
+				"postcss.config.ts"
+			)(fname)
+		end,
 	},
 	eslint = {},
 	slint_lsp = {},
@@ -155,20 +168,21 @@ local servers = {
 		root_markers = {
 			"Move.toml",
 		},
-		-- root_dir = lspconfig.util.root_pattern 'Move.toml',
 		single_file_support = true,
-		-- settings = {
-		-- 	["move-analyzer"] = {
-		-- 		-- inlayHints = {
-		-- 		-- 	typeHints = {
-		-- 		-- 		enable = true,
-		-- 		-- 	},
-		-- 		-- 	parameterHints = {
-		-- 		-- 		enable = true,
-		-- 		-- 	},
-		-- 		-- },
-		-- 	},
-		-- },
+		settings = {
+			move = {
+				["inlay-hints"] = {
+					param = true,
+					type = true,
+				},
+			},
+			["move-analyzer"] = {
+				["inlay-hints"] = {
+					param = true,
+					type = true,
+				},
+			},
+		},
 	},
 
 	solidity_ls = {
